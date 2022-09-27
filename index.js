@@ -9,16 +9,13 @@ const cors = require('cors')
 
 app.use(cors())
 
+app.use( express.json() );
+
 dbconnection();
 
 
+app.use('/api/usuarios', require('./routes/usuarios'));
 
-app.get('/', (req, res)=>{
-    res.json({
-        ok:true,
-        msg: 'Hola Mundo'
-    })
-});
 
 
 app.listen( process.env.PORT ,() => {console.log('Servidor corriendo en puerto 3000');} )
